@@ -54,6 +54,7 @@ header {
     width: 100%;
     height: 80px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
@@ -98,8 +99,55 @@ header>ul a i {
     font-weight: 900;
 }
 
-.main-container>.header>.hero>section h1>span {
-    text-decoration: underline lightgreen;
+.main-container>.header>.hero>section h1>span#name {
+    position: relative;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(to right, lightgreen, #fff, lightgreen, #fff);
+    background-clip: text;
+    background: -webkit-linear-gradient(to right,
+            lightgreen,
+            #fff,
+            lightgreen,
+            #fff);
+    -webkit-background-clip: text;
+    background-size: 300%;
+    animation: move 4s infinite ease alternate;
+}
+
+@keyframes move {
+
+    0%,
+    100% {
+        background-position: left;
+    }
+
+    50% {
+        background-position: right;
+    }
+}
+
+.main-container>.header>.hero>section h1>span#name::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: rgb(114, 240, 114);
+    animation: blinck 2s infinite ease;
+}
+
+@keyframes blinck {
+
+    0%,
+    100% {
+        background-color: rgb(114, 240, 114);
+    }
+
+    50% {
+        background-color: #fff;
+    }
 }
 
 .main-container>.header>.hero>section p {
@@ -171,7 +219,6 @@ main.experience .stack {
 
 main.experience .stack h1 {
     color: #eee;
-
     font-size: 2rem;
 }
 
@@ -329,4 +376,182 @@ section.formControl form div:last-child {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+
+/* Mobile Phone View  */
+@media only screen and (max-width: 767px) {
+    .main-container {
+        width: 100%;
+    }
+
+    .main-container>.header>.img-Holder {
+        width: 60%;
+    }
+
+    .main-container>.header>.hero {
+        background-color: rgba(0 0 0 /.5);
+    }
+
+    header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.4rem;
+        padding-top: 1rem;
+    }
+
+    .main-container>.header>.hero>section {
+        justify-content: flex-end;
+        gap: 1.5rem;
+        padding-inline: 1rem;
+        padding-bottom: 4rem;
+    }
+
+    .main-container>.header>.hero>section h1 {
+        font-size: 1.05cm;
+    }
+
+    .main-container>.header>.hero>section p {
+        font-size: 1.05rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    /* styling experinece  */
+    main.experience {
+        padding-inline: 1rem;
+    }
+
+    main.experience .stack {
+        width: calc(100% / 2);
+        height: 100px;
+    }
+
+    main.experience .stack h1 {
+        font-size: 1.4rem;
+    }
+
+    main.experience .stack h4 {
+        font-size: 1rem;
+    }
+
+    section.projects {
+        padding-inline: 1rem;
+    }
+
+    section.projects .title h1 {
+        font-size: 2rem;
+    }
+
+    section.projects main.display {
+        gap: 1.5rem;
+    }
+
+    section.projects main.display .project-d {
+        width: 100%;
+        height: 250px;
+    }
+
+    section.projects main.display .project-d .img-H {
+        height: 200px;
+    }
+
+    section.projects main.display .project-d h3 {
+        font-size: 1.3rem;
+    }
+
+    section.projects main.display .project-d p {
+        font-size: 0.8rem;
+    }
+
+    section.formControl .container {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 3rem;
+    }
+
+    section.formControl .text h1 {
+        font-size: 1.1cm;
+    }
+
+    section.formControl .text p {
+        font-size: 0.85rem;
+        text-align: justify;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .main-container {
+        width: 100%;
+    }
+
+    .main-container>.header>.img-Holder {
+        width: 50%;
+    }
+
+    .main-container>.header>.hero {
+        background-color: rgba(0 0 0 /.4);
+    }
+
+    header {
+        padding-inline: 2rem;
+        padding-top: 2rem;
+    }
+
+    .main-container>.header>.hero>section {
+        justify-content: flex-end;
+        gap: 1.5rem;
+        padding-inline: 2rem;
+        padding-bottom: 6rem;
+    }
+
+    .main-container>.header>.hero>section h1 {
+        font-size: 2cm;
+    }
+
+    .main-container>.header>.hero>section p {
+        font-size: 1.2rem;
+    }
+
+    /* Projects  */
+    section.projects {
+        padding-inline: 2rem;
+    }
+
+    section.projects main.display {
+        width: 100%;
+        height: auto;
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    section.projects main.display .project-d {
+        width: calc(100% / 2.1);
+        height: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    section.formControl {
+        width: 100%;
+        margin: 0;
+        padding-inline: 2rem;
+    }
+
+    section.formControl .container {
+        gap: 4rem;
+    }
+
+    section.formControl .text h1 {
+        font-size: 1.3cm;
+    }
+
+    section.formControl .text p {
+        font-size: 1.1rem;
+        text-align: justify;
+    }
 }
